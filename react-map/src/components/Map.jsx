@@ -33,15 +33,15 @@ const skillsList = [{
 }]
 
 const MapAll = () => {
-  const [edit, setEdit] = useState({ nickName: 'Mehmet Temiz', address: 'Turkey', job: 'Frontend Developer' });
+  const [markers, setMarkers] = useState([{ nickName: 'Mehmet Temiz', address: 'Turkey', job: 'Frontend Developer' }]);
   const [skills, setSkills] = useState([]);
 
   const [isActivite, setIsActivite] = useState(false);
 
   const handleChange = (e) => {
     const value = e.target.value
-    setEdit({
-      ...edit,
+    setMarkers({
+      ...markers,
       [e.target.name]: value
     });
     e.preventDefault()
@@ -70,9 +70,9 @@ const MapAll = () => {
     <>
       {isActivite ? <div id="creator" className={`creator ${isActivite}`}>
 
-        <input name="nickName" className="name-input" type='text' placeholder='Enter Your Name' value={edit.nickName} onChange={handleChange} />
-        <input name="address" className="address-input" type='text' placeholder='Enter Your Address' value={edit.address} onChange={handleChange} />
-        <input name="job" className="job-input" type='text' placeholder='Enter Your Name' value={edit.job} onChange={handleChange} />
+        <input name="nickName" className="name-input" type='text' placeholder='Enter Your Name' value={markers.nickName} onChange={handleChange} />
+        <input name="address" className="address-input" type='text' placeholder='Enter Your Address' value={markers.address} onChange={handleChange} />
+        <input name="job" className="job-input" type='text' placeholder='Enter Your Name' value={markers.job} onChange={handleChange} />
         {skillsList.map((item) =>
           <label>
             <input type='checkbox' checked={skills.includes(item.name)} value={item.name} onChange={checkboxHandler} />
@@ -88,7 +88,7 @@ const MapAll = () => {
           url="https://www.google.cn/maps/vt?lyrs=m@189&gl=tr&x={x}&y={y}&z={z}"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        <AddMarkers editTool={editTool} edit={edit} setIsActivite={setIsActivite} skills={skills} />
+        <AddMarkers editTool={editTool} markers={markers} setMarkers={setMarkers} setIsActivite={setIsActivite} skills={skills} />
 
       </MapContainer>
     </>

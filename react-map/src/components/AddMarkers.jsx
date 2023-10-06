@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import { Marker,  useMapEvents } from "react-leaflet";
+import { Marker, useMapEvents } from "react-leaflet";
 import { icon } from "./Icon";
 import MarkCard from "./MarkCard";
 
-const AddMarkers = ({ edit, skills, editTool, setIsActivite }) => {
-  const [markers, setMarkers] = useState([]);
+const AddMarkers = ({ markers, setMarkers, skills, editTool, setIsActivite }) => {
+
 
 
   useMapEvents({
     click: (e) => {
-      setMarkers([...markers, e.latlng]);
+      setMarkers([...markers, e.latlng,]);
     },
   });
 
@@ -30,7 +29,7 @@ const AddMarkers = ({ edit, skills, editTool, setIsActivite }) => {
           position={marker}
           icon={icon}
         >
-          <MarkCard edit={edit} skills={skills} marker={marker} editTool={editTool} removeMark={removeMark} />
+          <MarkCard markers={marker} skills={skills}  editTool={editTool} removeMark={removeMark} />
         </Marker>
       ))}
     </>
