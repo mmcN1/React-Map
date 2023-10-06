@@ -1,0 +1,23 @@
+.button-1 {
+    background-color: transparent;
+    border: 1px solid black; 
+    border-radius: 16px;
+    transition: all 2s;
+}
+
+.button-2 {
+    background-color: transparent;
+    border: 1px solid black; 
+    border-radius: 16px;
+    transition: all 1s;
+}
+
+
+
+.button-2:hover {
+    background-color: rgb(238, 57, 57);
+}
+
+.button-1:hover {
+    background-color: rgb(89, 89, 202);
+}
